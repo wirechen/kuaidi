@@ -12,6 +12,8 @@ const APP_KEY = '49884e46-6dd9-4e45-b7c1-f444dfd02e8d';
 //请求url，快递鸟提供
 const REQ_URL = 'http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx';
 
+// 注:---若要长期使用请大家自行去官网注册免费申请EBUSINESS_ID和APP_KEY
+
 /**
  * 调用快递鸟API:查看及时物流信息
  * @param expCode 快递编码
