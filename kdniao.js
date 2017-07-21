@@ -20,7 +20,7 @@ const REQ_URL = 'http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx';
  * @param expNo 快递单号
  * @returns {*|string|string|string}
  */
-let kdniao = (expCode, expNo, cb) => {
+let kdniao = (expCode, expNo) => {
 
     const requestData = `{"OrderCode":"","ShipperCode":"${expCode}","LogisticCode":"${expNo}"}`;
     const params = {
@@ -32,7 +32,18 @@ let kdniao = (expCode, expNo, cb) => {
     };
 
     //发出请求
-    new Promise(function (resole, reject) {
+
+    //异步解决方案1：回调函数
+    // request.post({url: REQ_URL, form: params}, function(error, response, body) {
+    //     if (!error && response.statusCode == 200) {
+    //         cb(body);
+    //     } else {
+    //         cb(body);
+    //     }
+    // })
+
+    //异步解决方案2：Promise
+    return Promise(function (resole, reject) {
         request.post({url: REQ_URL, form: params}, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 resole(body);
@@ -40,11 +51,7 @@ let kdniao = (expCode, expNo, cb) => {
                 reject(body);
             }
         })
-    }).then(function (data) {
-        cb(data);
-    }).catch(function (data) {
-        cb(data);
-    });
+    })
 
 };
 

@@ -28,9 +28,9 @@ let query = (expName, expNo) => {
     let expCode = getCode(expName);
 
     //2.查询物流跟踪信息
-    kdniao(expCode, expNo, function (res) {
-        console.log(res);
-    });
+    kdniao(expCode, expNo).then(function(res){
+    	console.last(res);
+    })
 
 };
 
